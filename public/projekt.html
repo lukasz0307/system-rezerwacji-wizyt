@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moja Rezerwacja</title>
+    <!-- Główny arkusz stylów -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Pasek nawigacyjny -->
+    <nav class="navbar">
+      <div class="nav-left">
+        <div class="logo-container">
+          <!-- Logo strony -->
+          <img src="images/RESERVE.png" alt="Logo strony" class="logo" />
+        </div>
+        <!-- Przycisk do wyświetlenia zakładów -->
+        <button class="nav-button" onclick="pokazZaklady()">
+          Przeglądaj zakłady
+        </button>
+      </div>
+      <div class="nav-right">
+        <!-- Przycisk logowania/rejestracji lub menu użytkownika -->
+        <div class="auth-buttons" id="authButtons">
+          <button onclick="pokazModal('login')">Zaloguj się</button>
+          <button onclick="pokazModal('register')">Zarejestruj się</button>
+        </div>
+        <div class="user-menu" id="userMenu">
+          <button id="user-button" class="user-button" style="display: none">
+            <img src="images/userIcon.png" alt="Profil" />
+          </button>
+          <div id="dropdownMenu">
+            <a href="#" onclick="pokazMojeWizyty()">Moje wizyty</a>
+            <a href="#" onclick="wyloguj()">Wyloguj</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Modal logowania/rejestracji -->
+    <div class="modal" id="authModal">
+      <div class="modal-content">
+        <span class="close" onclick="zamknijModal()">&times;</span>
+        <div id="loginForm">
+          <h2>Zaloguj się</h2>
+          <input type="text" placeholder="Login" id="loginUsername" />
+          <input type="password" placeholder="Hasło" id="loginPassword" />
+          <button onclick="zaloguj()">Zaloguj się</button>
+        </div>
+        <div id="registerForm" style="display: none">
+          <h2>Rejestracja</h2>
+          <input type="text" placeholder="Login" />
+          <input type="password" placeholder="Hasło" />
+          <input type="password" placeholder="Powtórz hasło" />
+          <button onclick="zarejestruj()">Zarejestruj się</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Główna sekcja z zakładami -->
+    <main id="content">
+      <section id="zaklady-section">
+        <!-- Filtry wyszukiwania -->
+        <div class="filters">
+          <select id="filtr-usluga" onchange="filtrujZaklady()">
+            <option value="">Wszystkie usługi</option>
+          </select>
+          <input
+            type="text"
+            id="filtr-miasto"
+            placeholder="Filtruj po mieście..."
+            oninput="filtrujZaklady()"
+          />
+          <select id="sortowanie" onchange="sortujZaklady()">
+            <option value="ocena_desc">Ocena malejąco</option>
+            <option value="ocena_asc">Ocena rosnąco</option>
+          </select>
+        </div>
+
+        <!-- Lista zakładów generowana przez JS -->
+        <div id="lista-zakladow" class="cards-container"></div>
+      </section>
+    </main>
+
+    <!-- Modal rezerwacji -->
+    <div class="modal" id="rezerwacjaModal">
+      <div class="modal-content">
+        <span class="close" onclick="zamknijRezerwacje()">&times;</span>
+        <h2>Rezerwacja wizyty</h2>
+        <p id="rezerwacjaZaklad"></p>
+        <input type="date" id="rezerwacjaData" />
+        <select id="rezerwacjaGodzina">
+          <option value="">Wybierz godzinę</option>
+        </select>
+        <button onclick="potwierdzRezerwacje()">Zarezerwuj</button>
+      </div>
+    </div>
+
+    <!-- Sekcja z wizytami użytkownika -->
+    <section id="mojeWizyty" class="hidden">
+      <h2>Moje wizyty</h2>
+      <div id="listaRezerwacji" class="cards-container"></div>
+    </section>
+
+    <!-- Główny plik JS -->
+
+    <script src="js/autoryzacja.js"></script>
+    <script src="js/zaklady.js"></script>
+    <script src="js/wizyty.js"></script>
+    <script src="js/oceny.js"></script>
+    
+
+    <!-- SweetAlert2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>
