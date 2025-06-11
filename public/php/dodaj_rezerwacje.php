@@ -1,7 +1,8 @@
 <?php
+// Endpoint do dodawania nowej rezerwacji wizyty
 header("Content-Type: application/json");
 include 'db.php';
-
+// Pobierz dane z żądania
 $data = json_decode(file_get_contents("php://input"), true);
 
 $data_wizyty = $data["data"] ?? null;
@@ -16,6 +17,7 @@ if (!$data_wizyty || !$godzina_wizyty || !$login || !$id_zakl) {
 }
 
 try {
+    // Dodaj rezerwację do bazy
     $stmt = $conn->prepare("INSERT INTO wizyta (data_wizyty, godzina_wizyty, login, id_zakl) 
                             VALUES (:data, :godzina, :login, :id_zakl)");
     $stmt->execute([

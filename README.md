@@ -31,12 +31,10 @@ znacznikiProjekt/
 │   ├── projekt.html
 │   ├── style.css
 │   ├── js/
-│   │   ├── api.js
 │   │   ├── autoryzacja.js
 │   │   ├── zaklady.js
 │   │   ├── wizyty.js
 │   │   ├── oceny.js
-│   │   └── ui.js
 │   ├── php/
 │   │   ├── db.php
 │   │   ├── login.php
@@ -71,7 +69,6 @@ znacznikiProjekt/
 
 ### Frontend (public/js/)
 
-- **api.js** – funkcje do komunikacji z backendem (fetch do PHP)
 - **autoryzacja.js** – logowanie, rejestracja, wylogowanie, obsługa modali
 - **zaklady.js** – pobieranie, filtrowanie, sortowanie, wyświetlanie zakładów
 - **wizyty.js** – rezerwacje, wyświetlanie, odwoływanie, przekładanie wizyt

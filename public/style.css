@@ -1,9 +1,11 @@
+/* Główne ustawienia strony */
 body {
   margin: 0;
   font-family: "Segoe UI", sans-serif;
   background-color: #f5f5f5;
 }
 
+/* Pasek nawigacyjny */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -14,18 +16,21 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* Lewa część nawigacji (logo, przycisk) */
 .nav-left {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
+/* Logo strony */
 .logo {
   height: 80px;
   display: block;
   margin: 20px auto;
 }
 
+/* Przyciski nawigacji i logowania/rejestracji */
 .nav-button,
 .auth-buttons button {
   background-color: white;
@@ -45,17 +50,19 @@ body {
   background-color: #e6e6e6;
 }
 
+/* Prawa część nawigacji (logowanie, menu użytkownika) */
 .nav-right {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
+/* Menu użytkownika po zalogowaniu */
 .user-menu {
   position: relative;
-  display: inline-block;
 }
 
+/* Przycisk z ikoną użytkownika */
 .user-button {
   background: none;
   border: none;
@@ -64,45 +71,92 @@ body {
 }
 
 .user-button img {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  transition: transform 0.3s;
 }
 
-.dropdown {
+/* Dropdown z opcjami użytkownika */
+#dropdownMenu {
   position: absolute;
-  top: 50px;
-  right: 0;
+  top: 80px;
+  right: 20px;
   background-color: white;
-  border: 1px solid #ccc;
-  min-width: 150px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0;
+  display: none;
   z-index: 1000;
 }
 
-.dropdown li {
-  list-style: none;
-  padding: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  color: #333;
-}
-
-.dropdown li:hover,
-.dropdown a:hover {
-  background-color: #f0f0f0;
-}
-
-.dropdown a {
+#dropdownMenu a {
   display: block;
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 1.25rem;
   text-decoration: none;
   color: #333;
+  font-size: 14px;
 }
 
-/* Modal */
+#dropdownMenu a:hover {
+  background-color: #f2f2f2;
+}
+
+/* Sekcja filtrów nad listą zakładów */
+.filters {
+  padding: 1rem 2rem;
+  display: flex;
+  gap: 1rem;
+  height: 50px;
+  font-size: 10px;
+}
+
+.filters input[type="text"],
+.filters select {
+  padding: 0.5rem;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Lista zakładów */
+#lista-zakladow {
+  padding: 2rem;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Kontener na karty zakładów i wizyt */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Pojedyncza karta zakładu lub wizyty */
+.card {
+  width: 250px;
+  background: #f8f9fa;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+.card button {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+/* Modal (okno dialogowe) */
 .modal {
   display: none;
   position: fixed;
@@ -154,6 +208,7 @@ body {
   background-color: #0056b3;
 }
 
+/* Przycisk zamykania modala */
 .close {
   position: absolute;
   top: 10px;
@@ -167,58 +222,12 @@ body {
   color: black;
 }
 
+/* Ukrywanie elementów */
 .hidden {
   display: none !important;
 }
 
-/* Karty */
-.cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-.card {
-  width: 250px;
-  background: #f8f9fa;
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  padding: 16px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
-}
-
-.card h3 {
-  margin-top: 0;
-}
-
-.card button {
-  margin-top: 0.5rem;
-  padding: 0.5rem;
-  width: 100%;
-}
-
-/* Filtrowanie */
-.filters {
-  padding: 1rem 2rem;
-  display: flex;
-  gap: 1rem;
-  height: 50px;
-  font-size: 10px;
-}
-
-.filters input[type="text"],
-.filters select {
-  padding: 0.5rem;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-/* Modal rezerwacji */
+/* Dodatkowe style dla modala rezerwacji */
 #rezerwacjaModal .modal-content {
   width: 400px;
   max-width: 90%;
@@ -242,36 +251,4 @@ body {
 
 #rezerwacjaModal button {
   margin-top: 15px;
-}
-
-/* Avatar dropdown */
-#dropdownMenu {
-  position: absolute;
-  top: 80px;
-  right: 20px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 0.5rem 0;
-  display: none;
-  z-index: 1000;
-}
-
-#dropdownMenu a {
-  display: block;
-  padding: 0.75rem 1.25rem;
-  text-decoration: none;
-  color: #333;
-  font-size: 14px;
-}
-
-#dropdownMenu a:hover {
-  background-color: #f2f2f2;
-}
-
-/* Lista zakładów */
-#lista-zakladow {
-  padding: 2rem;
-  margin: 0 auto;
-  box-sizing: border-box;
 }

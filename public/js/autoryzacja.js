@@ -1,5 +1,6 @@
+// Zmienna globalna przechowująca zalogowanego użytkownika
 let zalogowanyUzytkownik = null;
-
+// Obsługa modali logowania/rejestracji
 function pokazModal(typ) {
   document.getElementById("authModal").style.display = "block";
   document.getElementById("loginForm").style.display =
@@ -11,7 +12,7 @@ function pokazModal(typ) {
 function zamknijModal() {
   document.getElementById("authModal").style.display = "none";
 }
-
+// Logowanie użytkownika
 function zaloguj() {
   const login = document.getElementById("loginUsername").value;
   const pass = document.getElementById("loginPassword").value;
@@ -56,7 +57,7 @@ function zaloguj() {
       });
     });
 }
-
+// Wylogowanie użytkownika
 function wyloguj() {
   zalogowanyUzytkownik = null;
   document.getElementById("user-button").style.display = "none";
@@ -68,7 +69,7 @@ function wyloguj() {
   document.getElementById("loginUsername").value = "";
   document.getElementById("loginPassword").value = "";
 }
-
+// Rejestracja nowego użytkownika
 function zarejestruj() {
   const login = document
     .querySelector("#registerForm input[placeholder='Login']")

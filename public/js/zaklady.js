@@ -1,10 +1,11 @@
+//Zmienne globalne:  tablica przechowujaca zaklady pobrane z bazy danych i obiekt aktywne filtry
 let zaklady = [];
 let aktywneFiltry = {
   typ: "",
   miasto: "",
   sortowanie: "ocena_desc",
 };
-
+//Pobieranie zakładów z bazy i inicjalizacja filtrów
 function pobierzZaklady() {
   fetch("php/get_zaklady.php")
     .then((response) => response.json())
@@ -31,7 +32,7 @@ function pobierzKategorie() {
       });
     });
 }
-
+//Wyświetlanie sekcji zakładów i resetowanie filtrów
 function pokazZaklady() {
   document.getElementById("mojeWizyty").classList.add("hidden");
   document.getElementById("zaklady-section").classList.remove("hidden");
@@ -40,7 +41,7 @@ function pokazZaklady() {
   aktywneFiltry = { typ: "", miasto: "", sortowanie: "ocena_desc" };
   zastosujFiltryISortowanie();
 }
-
+//Obsługa filtrów i sortowania
 function filtrujZaklady() {
   aktywneFiltry.typ = document.getElementById("filtr-usluga").value;
   aktywneFiltry.miasto = document
@@ -73,7 +74,7 @@ function zastosujFiltryISortowanie() {
   );
   wyswietlZaklady(wynik);
 }
-
+//Wyświetlanie listy zakładów na stronie
 function wyswietlZaklady(lista) {
   const kontener = document.getElementById("lista-zakladow");
   kontener.innerHTML = "";
@@ -97,7 +98,7 @@ function wyswietlZaklady(lista) {
     kontener.appendChild(div);
   });
 }
-
+//Inicjalizacja po załadowaniu strony
 document.addEventListener("DOMContentLoaded", () => {
   pobierzZaklady();
   pobierzKategorie();

@@ -1,5 +1,6 @@
+// Zmienna globalna do przechowywania aktualnie wybranego zakładu
 let aktualnyZakladId = null;
-
+// Funkcja otwierająca modal rezerwacji dla wybranego zakładu
 function zarezerwuj(id) {
   id = parseInt(id);
   aktualnyZakladId = id;
@@ -56,11 +57,11 @@ function zarezerwuj(id) {
     }
   };
 }
-
+// Zamknięcie modala rezerwacji
 function zamknijRezerwacje() {
   document.getElementById("rezerwacjaModal").style.display = "none";
 }
-
+// Wyświetlanie wizyt zalogowanego użytkownika
 function pokazMojeWizyty() {
   if (!zalogowanyUzytkownik) {
     Swal.fire({
@@ -108,7 +109,7 @@ function pokazMojeWizyty() {
       kontener.innerHTML = "<p>Błąd ładowania wizyt.</p>";
     });
 }
-
+// Potwierdzanie rezerwacji i zapis do bazy
 function potwierdzRezerwacje() {
   const data = document.getElementById("rezerwacjaData").value;
   const godzina = document.getElementById("rezerwacjaGodzina").value;
@@ -171,6 +172,7 @@ function potwierdzRezerwacje() {
       });
     });
 }
+// Odwoływanie wizyty
 function odwolajWizyte(idWizyty) {
   Swal.fire({
     icon: "question",
@@ -203,7 +205,7 @@ function odwolajWizyte(idWizyty) {
     }
   });
 }
-
+// Przekładanie wizyty na inny termin
 function przelozWizyte(idWizyty, staraData, staraGodzina) {
   const modalHtml = `
     <div style="display:flex; flex-direction:column; gap:10px; text-align:left;">

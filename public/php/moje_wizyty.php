@@ -1,7 +1,8 @@
 <?php
+// Endpoint zwracający wizyty zalogowanego użytkownika
 header("Content-Type: application/json");
 include 'db.php';
-
+// Pobierz login z żądania
 $data = json_decode(file_get_contents("php://input"), true);
 $login = $data["login"] ?? null;
 
@@ -11,6 +12,7 @@ if (!$login) {
 }
 
 try {
+    // Pobierz wizyty użytkownika z bazy danych
     $stmt = $conn->prepare("
         SELECT w.id_wizyty, w.data_wizyty, w.godzina_wizyty, w.id_zakl, dz.nazwa
         FROM wizyta w

@@ -1,3 +1,4 @@
+// Funkcja wyświetlająca formularz oceny i zapisująca ocenę do bazy
 function ocenZaklad(idZakladu) {
   if (!zalogowanyUzytkownik) {
     Swal.fire({

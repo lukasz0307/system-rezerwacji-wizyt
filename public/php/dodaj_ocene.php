@@ -13,7 +13,7 @@ if (!$id_zakl || !$ocena || !$login) {
 }
 
 try {
-    // Możesz dodać sprawdzenie, czy użytkownik już oceniał ten zakład
+    // Dodaj ocenę do bazy danych
     $stmt = $conn->prepare("INSERT INTO oceny (id_zakl, ocena, login) VALUES (?, ?, ?)");
     $stmt->execute([$id_zakl, $ocena, $login]);
     echo json_encode(["status" => "success"]);
